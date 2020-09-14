@@ -72,7 +72,8 @@ const MakeCollection = ({ go, id, setInfo }) => {
             donationName: donationName,
             endDate: endDate,
             endType: endType,
-            id: String(Date.now()).slice(11, 13)
+            progress: String(Date.now()).slice(11, 13),
+            id: Date.now()
         }
         console.log(newElement)
         setInfo(oldArray => [...oldArray, newElement])

@@ -11,29 +11,32 @@ import Icon24Add from '@vkontakte/icons/dist/24/add';
 
 
 
-const Feed = ({ go, id, info }) => (
-    <Panel id={id}>
-        <PanelHeader
-            left={<PanelHeaderButton onClick={go} data-to="makecollection" > <Icon24Add /></PanelHeaderButton>}>
-            Новости
+const Feed = ({ go, id, info }) => {
+    return (
+        <Panel id={id}>
+            <PanelHeader
+                left={<PanelHeaderButton onClick={go} data-to="home" > <Icon24Add /></PanelHeaderButton>}>
+                Новости
             </PanelHeader>
-        {info !== '' ? info.map((donation, donationID) => (
-            <Banner
-                before={<Avatar size={96} mode="image" style={{ backgroundSize: 'cover' }} src="https://i.imgur.com/uuiHNoh.png" />}
-                header={donation.donationName}
-                subheader=
-                {<React.Fragment>
-                    <InfoRow header={donation.id !== '100' ? donation.donationValue + '₽' : 'Cумма собрана!'}>
-                        <Progress value={donation.id} />
-                    </InfoRow>
-                </React.Fragment>}
-                actions={donation.id !== '100' ? 
-                <Button onClick={go} data-to="openpost" data-id={donationID} >Помочь</Button> : 
-                <Button onClick={go} data-to="openpost" data-id={donationID} >Посмотреть</Button>}
-            />
-        )) : null}
-    </Panel>
-);
+            {info ? info.map((donation, donationID) => (
+                <Banner
+                    key={donation.id}
+                    before={<Avatar size={96} mode="image" style={{ backgroundSize: 'cover' }} src="https://i.imgur.com/uuiHNoh.png" />}
+                    header={donation.donationName}
+                    subheader=
+                    {<React.Fragment>
+                        <InfoRow header={donation.progress !== '100' ? donation.donationValue + '₽' : 'Cумма собрана!'}>
+                            <Progress value={donation.id} />
+                        </InfoRow>
+                    </React.Fragment>}
+                    actions={donation.progress !== '100' ?
+                        <Button onClick={go} data-to="openpost" data-id={donationID} >Помочь</Button> :
+                        <Button onClick={go} data-to="openpost" data-id={donationID} >Посмотреть</Button>}
+                />
+            )) : null}
+        </Panel>
+    )
+}
 
 
 export default Feed;

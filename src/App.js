@@ -31,7 +31,8 @@ const App = () => {
 		donationName: 'На лечение Алексею Анатольевичу',
 		endDate: '',
 		endType: 'Сумма',
-		id: String(100)
+		progress: '100',
+		id: Date.now()
 	}]);
 	const [donationID, setDonationID] = React.useState();
 

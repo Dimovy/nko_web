@@ -9,7 +9,7 @@ import Icon24BrowserBack from '@vkontakte/icons/dist/24/browser_back';
 
 
 const OpenPost = ({ go, id, info, donationID }) => {
-    let value = Math.floor((info[donationID].id / 100) * info[donationID].donationValue);
+    let value = Math.floor((info[donationID].progress / 100) * info[donationID].donationValue);
     return (
         <Panel id={id}>
             <PanelHeader
@@ -33,7 +33,7 @@ const OpenPost = ({ go, id, info, donationID }) => {
                 subheader={
                     <React.Fragment>
                         <InfoRow header={<span>Собрано: <span style={{ color: 'black' }}>{value} ₽</span></span>}>
-                            <Progress style={{ marginBottom: '15px', color: 'rgb(68,174,76' }} value={info[donationID].id} />
+                            <Progress style={{ marginBottom: '15px', color: 'rgb(68,174,76' }} value={info[donationID].progress} />
                         </InfoRow>
                     </React.Fragment>}
             />
@@ -52,7 +52,7 @@ const OpenPost = ({ go, id, info, donationID }) => {
                 </Div>
             </Group>
             <Div>
-               {info[donationID].id !== '100' ? <Button size="xl" mode="primary" style={{ marginBottom: '50px', backgroundColor: 'rgb(68,174,76' }}>Пожертвовать</Button> : null}
+               {info[donationID].progress !== '100' ? <Button size="xl" mode="primary" style={{ marginBottom: '50px', backgroundColor: 'rgb(68,174,76' }}>Пожертвовать</Button> : null}
             </Div>
         </Panel>
     )
